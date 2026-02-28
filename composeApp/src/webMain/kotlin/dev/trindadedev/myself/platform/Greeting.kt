@@ -1,4 +1,4 @@
-package dev.trindadedev.myself
+package dev.trindadedev.myself.platform
 
 class Greeting {
   private val platform = getPlatform()

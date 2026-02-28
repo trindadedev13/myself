@@ -16,12 +16,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import org.jetbrains.compose.resources.painterResource
 
-import myself.composeapp.generated.resources.Res
-import myself.composeapp.generated.resources.compose_multiplatform
+import dev.trindadedev.myself.theme.AppTheme
 
 @Composable
 fun App() {
-  MaterialTheme {
+  AppTheme {
     var showContent by remember { mutableStateOf(false) }
     Column(
       modifier = Modifier
@@ -32,7 +31,7 @@ fun App() {
       verticalArrangement = Arrangement.Center,
     ) {
       NeoView {
-        Text(text = "this is my NeoView")
+        Text(text = "This is my NeoView")
       }
     }
   }

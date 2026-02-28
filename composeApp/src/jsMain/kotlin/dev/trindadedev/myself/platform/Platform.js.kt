@@ -1,4 +1,4 @@
-package dev.trindadedev.myself
+package dev.trindadedev.myself.platform
 
 class JsPlatform: Platform {
   override val name: String = "Web with Kotlin/JS"

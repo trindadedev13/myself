@@ -1,4 +1,4 @@
-package dev.trindadedev.myself
+package dev.trindadedev.myself.platform
 
 interface Platform {
   val name: String

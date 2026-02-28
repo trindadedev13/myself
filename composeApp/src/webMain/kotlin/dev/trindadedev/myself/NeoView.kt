@@ -35,6 +35,7 @@ fun NeoView(
   foregroundStrokeColor: Color = Color.Black,
   foregroundStrokeWidth: Dp = 3.dp,
   animationDuration: Int = 100,
+  clickable: Boolean = true,
   enabled: Boolean = true,
   onClick: () -> Unit = {},
   content: @Composable BoxScope.() -> Unit
@@ -53,16 +54,15 @@ fun NeoView(
     label = ""
   )
 
-  Box(
-    modifier = modifier.wrapContentSize()
-  ) {
+  Box(modifier = modifier.wrapContentSize()) {
+
     Box(
       modifier = Modifier
+        .matchParentSize()
         .offset(
           x = backgroundMarginStart,
           y = backgroundMarginTop
         )
-        .fillMaxSize()
         .clip(RoundedCornerShape(backgroundRadius))
         .background(
           if (enabled) backgroundShadowColor
@@ -80,14 +80,17 @@ fun NeoView(
           foregroundStrokeColor,
           RoundedCornerShape(backgroundRadius)
         )
-        .pointerInput(enabled) {
-          if (enabled) {
+        .pointerInput(clickable, enabled) {
+          if (clickable && enabled) {
             detectTapGestures(
               onPress = {
                 pressed = true
-                tryAwaitRelease()
+                val released = tryAwaitRelease()
                 pressed = false
-                onClick()
+
+                if (released) {
+                  onClick()
+                }
               }
             )
           }
