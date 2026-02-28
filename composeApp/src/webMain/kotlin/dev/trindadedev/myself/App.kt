@@ -1,5 +1,7 @@
 package dev.trindadedev.myself
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeContentPadding
@@ -23,9 +25,11 @@ fun App() {
     var showContent by remember { mutableStateOf(false) }
     Column(
       modifier = Modifier
+        .background(MaterialTheme.colorScheme.background)
         .safeContentPadding()
         .fillMaxSize(),
       horizontalAlignment = Alignment.CenterHorizontally,
+      verticalArrangement = Arrangement.Center,
     ) {
       NeoView {
         Text(text = "this is my NeoView")
