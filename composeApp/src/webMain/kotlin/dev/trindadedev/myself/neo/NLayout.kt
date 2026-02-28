@@ -24,16 +24,26 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
+@Immutable
+data class NDimens(
+  val backgroundMarginTop: Dp = 6.dp,
+  val backgroundMarginStart: Dp = 6.dp,
+  val backgroundRadius: Dp = 3.dp,
+  val foregroundStrokeWidth: Dp = 3.dp,
+)
+
+@Immutable
+data class NColors(
+  val backgroundShadowColor: Color = Color.Black,
+  val foregroundColor: Color = Color.White,
+  val foregroundStrokeColor: Color = Color.Black,
+)
+
 @Composable
 fun NLayout(
   modifier: Modifier = Modifier,
-  backgroundMarginTop: Dp = 6.dp,
-  backgroundMarginStart: Dp = 6.dp,
-  backgroundRadius: Dp = 3.dp,
-  backgroundShadowColor: Color = Color.Black,
-  foregroundColor: Color = Color.White,
-  foregroundStrokeColor: Color = Color.Black,
-  foregroundStrokeWidth: Dp = 3.dp,
+  dimens: NDimens = NDimens(),
+  colors: NColors = NColors(),
   animationDuration: Int = 100,
   clickable: Boolean = true,
   enabled: Boolean = true,
@@ -43,29 +53,28 @@ fun NLayout(
   var pressed by remember { mutableStateOf(false) }
 
   val offsetX by animateDpAsState(
-    targetValue = if (pressed) backgroundMarginStart else 0.dp,
+    targetValue = if (pressed) dimens.backgroundMarginStart else 0.dp,
     animationSpec = tween(animationDuration),
     label = ""
   )
 
   val offsetY by animateDpAsState(
-    targetValue = if (pressed) backgroundMarginTop else 0.dp,
+    targetValue = if (pressed) dimens.backgroundMarginTop else 0.dp,
     animationSpec = tween(animationDuration),
     label = ""
   )
 
   Box(modifier = modifier.wrapContentSize()) {
-
     Box(
       modifier = Modifier
         .matchParentSize()
         .offset(
-          x = backgroundMarginStart,
-          y = backgroundMarginTop
+          x = dimens.backgroundMarginStart,
+          y = dimens.backgroundMarginTop
         )
-        .clip(RoundedCornerShape(backgroundRadius))
+        .clip(RoundedCornerShape(dimens.backgroundRadius))
         .background(
-          if (enabled) backgroundShadowColor
+          if (enabled) colors.backgroundShadowColor
           else Color(0xFFBDBDBD)
         )
     )
@@ -73,12 +82,12 @@ fun NLayout(
     Box(
       modifier = Modifier
         .offset(x = offsetX, y = offsetY)
-        .clip(RoundedCornerShape(backgroundRadius))
-        .background(foregroundColor)
+        .clip(RoundedCornerShape(dimens.backgroundRadius))
+        .background(colors.foregroundColor)
         .border(
-          foregroundStrokeWidth,
-          foregroundStrokeColor,
-          RoundedCornerShape(backgroundRadius)
+          dimens.foregroundStrokeWidth,
+          colors.foregroundStrokeColor,
+          RoundedCornerShape(dimens.backgroundRadius)
         )
         .pointerInput(clickable, enabled) {
           if (clickable && enabled) {

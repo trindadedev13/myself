@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import org.jetbrains.compose.resources.painterResource
 
+import dev.trindadedev.myself.neo.NColors
 import dev.trindadedev.myself.neo.NLayout
 import dev.trindadedev.myself.theme.AppTheme
 
@@ -25,7 +26,9 @@ fun App() {
       horizontalAlignment = Alignment.CenterHorizontally,
       verticalArrangement = Arrangement.Center,
     ) {
-      NLayout {
+      NLayout(
+        colors = NColors(backgroundShadowColor = MaterialTheme.colorScheme.primary)
+      ) {
         Text(text = "This is my NeoView")
       }
     }
