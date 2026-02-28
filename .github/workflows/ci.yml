@@ -30,8 +30,8 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
-      - name: Build Web (WASM)
-        run: ./gradlew :composeApp:wasmJsBrowserProductionWebpack
+      - name: Build Web
+        run: ./gradlew :composeApp:wasmJsBrowserDistribution
 
       - name: List build folder
         run: ls -R composeApp/build
@@ -40,6 +40,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: composeApp/build/dist/wasmJs/productionExecutable
+
 
   deploy:
     environment:
