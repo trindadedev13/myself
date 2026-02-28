@@ -1,4 +1,4 @@
-package dev.trindadedev.myself
+package dev.trindadedev.myself.neo
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun NeoView(
+fun NLayout(
   modifier: Modifier = Modifier,
   backgroundMarginTop: Dp = 6.dp,
   backgroundMarginStart: Dp = 6.dp,
