@@ -21,6 +21,7 @@ fun App() {
   AppTheme {
     Column(
       modifier = Modifier
+        .background(MaterialTheme.colorScheme.background)
         .safeContentPadding()
         .fillMaxSize(),
       horizontalAlignment = Alignment.CenterHorizontally,
