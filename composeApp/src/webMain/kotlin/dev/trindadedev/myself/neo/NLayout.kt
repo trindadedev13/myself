@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.dp
 data class NDimens(
   val backgroundMarginTop: Dp = 6.dp,
   val backgroundMarginStart: Dp = 6.dp,
-  val backgroundRadius: Dp = 3.dp,
+  val backgroundRadius: Dp = 5.dp,
   val foregroundStrokeWidth: Dp = 3.dp,
 )
 
